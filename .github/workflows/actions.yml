@@ -5,10 +5,11 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      env:
-        DEBUG_ENV: ${{ secrets.server_name }}
-      - run: $DEBUG_ENV > something.txt
-      - run: cat something.txt
+      - name: debug secret
+      	env:
+	  DEBUG_ENV: ${{ secrets.server_name }}
+      	run: $DEBUG_ENV > something.txt
+        run: cat something.txt
       - run: echo "${{ secrets.server_name }}"
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
